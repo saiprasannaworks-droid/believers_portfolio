@@ -9,7 +9,7 @@ const portfolioData = {
   email: "saiprasnnaworks@gmail.com",
   linkedin: "https://www.linkedin.com/in/saiprasannaworks/",
   github: "https://github.com/saiprasannaworks-droid",
-  resumeUrl: "https://drive.google.com/file/d/16aoabCMcVRkWbTAGx5m04mP5JgZH5Wh5/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/1_zOAbge7kt2axb3HyLHU8kYspGl-QjyP/view?usp=sharing",
   profileImage: profilePhoto,
 
   heroIntro:
