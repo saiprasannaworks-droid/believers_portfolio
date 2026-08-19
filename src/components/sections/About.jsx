@@ -1,54 +1,47 @@
 import { FaCode, FaDatabase, FaLayerGroup, FaRocket } from "react-icons/fa6";
 import portfolioData from "../../data/portfolioData";
-import PageContainer from "../layout/PageContainer";
-import SectionWrapper from "../layout/SectionWrapper";
-import SectionHeading from "../common/SectionHeading";
 
 const capabilityIcons = {
-  "Frontend Systems": <FaCode />,
-  "Backend Logic": <FaLayerGroup />,
-  "Data & Persistence": <FaDatabase />,
-  "Product Delivery": <FaRocket />,
+  "Frontend Development": <FaCode />,
+  "Backend Engineering": <FaLayerGroup />,
+  "Database & Storage": <FaDatabase />,
+  "DevOps & Deployment": <FaRocket />,
 };
 
 function About() {
-  const { aboutParagraphs, capabilityCards } = portfolioData;
+  const { careerObjective, capabilityCards } = portfolioData;
 
   return (
-    <SectionWrapper id="about" className="about-section">
-      <PageContainer>
+    <section id="about" className="section-shell">
+      <div className="container-shell">
         <div className="about-layout">
           <div className="about-content" data-reveal="up">
-            <SectionHeading
-              eyebrow="About Me"
-              title="Crafting products with"
-              highlight="clarity, structure, and polish"
-              description="I focus on building web applications that are not only functional, but well-structured, user-centered, and visually refined."
-            />
+            <span className="section-eyebrow">About Me</span>
+            <h2 className="section-title">
+              Crafting products with{" "}
+              <span className="gradient-text">clarity, structure, and polish</span>
+            </h2>
+            <p className="section-description">
+              I focus on building web applications that are not only functional, but well-structured,
+              user-centered, and visually refined.
+            </p>
 
             <div className="about-copy">
-              {aboutParagraphs.map((paragraph) => (
-                <p key={paragraph} className="about-copy__paragraph">
-                  {paragraph}
-                </p>
-              ))}
+              <p className="about-copy__paragraph">{careerObjective}</p>
             </div>
           </div>
 
           <div className="about-side" data-reveal="scale">
             <div className="about-side__panel glass-card glow-ring noise-overlay">
               <span className="section-eyebrow">Working Style</span>
-
               <h3 className="about-side__title">
                 I approach development as a balance of{" "}
                 <span className="gradient-text">engineering discipline</span> and{" "}
                 <span className="gradient-text">product presentation</span>.
               </h3>
-
               <p className="about-side__text">
-                My goal is to build applications that feel complete — from clean UI and
-                strong layout composition to organized code structure, scalable logic,
-                and reliable user experience.
+                My goal is to build applications that feel complete — from clean UI and strong layout
+                composition to organized code structure, scalable logic, and reliable user experience.
               </p>
             </div>
           </div>
@@ -65,16 +58,13 @@ function About() {
               <div className="about-capability-card__icon">
                 {capabilityIcons[card.title]}
               </div>
-
-              <div className="about-capability-card__content">
-                <h3 className="about-capability-card__title">{card.title}</h3>
-                <p className="about-capability-card__description">{card.description}</p>
-              </div>
+              <h3 className="about-capability-card__title">{card.title}</h3>
+              <p className="about-capability-card__description">{card.description}</p>
             </article>
           ))}
         </div>
-      </PageContainer>
-    </SectionWrapper>
+      </div>
+    </section>
   );
 }
 

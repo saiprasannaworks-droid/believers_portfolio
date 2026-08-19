@@ -1,0 +1,437 @@
+/* ── About ─────────────────────────────────────────────── */
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.about-copy {
+  margin-top: 1.2rem;
+}
+
+.about-copy__paragraph {
+  margin: 0 0 1rem;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.about-side__panel {
+  padding: 1.2rem;
+  border-radius: var(--radius-xl);
+}
+
+.about-side__title {
+  margin: 0.9rem 0 0.7rem;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.about-side__text {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.about-capabilities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.about-capability-card {
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+}
+
+.about-capability-card__icon {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(34, 211, 238, 0.1));
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.about-capability-card__title {
+  margin: 0.9rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.about-capability-card__description {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+/* ── Skills ────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.skills-card {
+  padding: 1.2rem;
+  border-radius: var(--radius-lg);
+}
+
+.skills-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.skills-card__icon {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(34, 211, 238, 0.1));
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.skills-card__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.skills-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ── Experience / Education ────────────────────────────── */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.experience-card {
+  padding: 1.3rem;
+  border-radius: var(--radius-lg);
+}
+
+.experience-card__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-card__title {
+  margin: 0 0 0.3rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.experience-card__subtitle {
+  margin: 0 0 0.2rem;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.experience-card__period {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.experience-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(34, 211, 238, 0.08));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.experience-card__list {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.experience-card__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.experience-card__list-icon {
+  margin-top: 0.2rem;
+  color: var(--secondary);
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+
+.experience-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+.experience-card__link:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+/* ── Certifications ────────────────────────────────────── */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cert-card {
+  padding: 1.1rem;
+  border-radius: var(--radius-md);
+}
+
+.cert-card__title {
+  margin: 0 0 0.35rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cert-card__issuer {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.cert-card__date {
+  margin: 0.4rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.cert-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: color var(--transition-base);
+}
+
+.cert-card__link:hover {
+  color: var(--primary);
+}
+
+/* ── Contact ───────────────────────────────────────────── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr);
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-radius: 22px;
+}
+
+.contact-info-card__icon {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(34, 211, 238, 0.1));
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.contact-info-card__label {
+  margin: 0 0 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-info-card__value {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.contact-form-wrap {
+  padding: 1.2rem;
+  border-radius: var(--radius-xl);
+}
+
+.contact-form-wrap__header {
+  margin-bottom: 1.1rem;
+}
+
+.contact-form-wrap__title {
+  margin: 0.9rem 0 0.55rem;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.contact-form-wrap__text {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.contact-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-field__label {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.contact-field__input,
+.contact-field__textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 0.85rem 0.95rem;
+  outline: none;
+  font: inherit;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.contact-field__input::placeholder,
+.contact-field__textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-field__input:focus,
+.contact-field__textarea:focus {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.contact-field__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-field__error {
+  color: #fca5a5;
+  font-size: 0.82rem;
+}
+
+.contact-form__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.contact-form__status--success {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.28);
+}
+
+.contact-form__status--error {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.28);
+}
+
+.contact-form__submit {
+  justify-self: start;
+}
+
+.contact-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

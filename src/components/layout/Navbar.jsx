@@ -2,15 +2,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 import { FaFileArrowDown, FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import portfolioData from "../../data/portfolioData";
-import socialLinks from "../../data/socialLinks";
 import ThemeToggle from "../ui/ThemeToggle";
-import PageContainer from "./PageContainer";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -18,131 +17,76 @@ function Navbar({ theme, toggleTheme }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-
   const sectionMetricsRef = useRef([]);
   const tickingRef = useRef(false);
 
-  const { fullName, resumeUrl } = portfolioData;
-
-  const socialMap = useMemo(() => {
-    const map = {};
-    for (const link of socialLinks) {
-      map[link.id] = link.url;
-    }
-    return map;
-  }, []);
+  const { fullName, resumeUrl, linkedin, github } = portfolioData;
 
   useEffect(() => {
     const buildSectionMetrics = () => {
       sectionMetricsRef.current = NAV_ITEMS.map((item) => {
-        const sectionId = item.href.replace("#", "");
-        const element = document.getElementById(sectionId);
-
-        if (!element) return null;
-
-        return {
-          id: sectionId,
-          element,
-          top: element.offsetTop,
-          height: element.offsetHeight,
-        };
+        const id = item.href.replace("#", "");
+        const el = document.getElementById(id);
+        if (!el) return null;
+        return { id, element: el, top: el.offsetTop, height: el.offsetHeight };
       }).filter(Boolean);
     };
 
     const updateActiveState = () => {
       setIsScrolled(window.scrollY > 16);
-
-      const navOffset = 140;
-      const scrollPosition = window.scrollY + navOffset;
-      const visibleSections = sectionMetricsRef.current;
-
-      let currentSection = "home";
-
-      for (const section of visibleSections) {
-        if (
-          scrollPosition >= section.top &&
-          scrollPosition < section.top + section.height
-        ) {
-          currentSection = section.id;
+      const scrollPos = window.scrollY + 140;
+      let current = "home";
+      for (const sec of sectionMetricsRef.current) {
+        if (scrollPos >= sec.top && scrollPos < sec.top + sec.height) {
+          current = sec.id;
           break;
         }
       }
-
-      const lastSection = visibleSections[visibleSections.length - 1];
-      if (lastSection && scrollPosition >= lastSection.top) {
-        currentSection = lastSection.id;
-      }
-
-      setActiveSection((prev) => (prev === currentSection ? prev : currentSection));
+      const last = sectionMetricsRef.current[sectionMetricsRef.current.length - 1];
+      if (last && scrollPos >= last.top) current = last.id;
+      setActiveSection((prev) => (prev === current ? prev : current));
     };
 
-    const requestScrollUpdate = () => {
+    const onScroll = () => {
       if (tickingRef.current) return;
-
       tickingRef.current = true;
-
-      window.requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         updateActiveState();
         tickingRef.current = false;
       });
     };
 
-    const handleResize = () => {
+    const onResize = () => {
       buildSectionMetrics();
-      requestScrollUpdate();
+      onScroll();
     };
 
     buildSectionMetrics();
     updateActiveState();
-
-    window.addEventListener("scroll", requestScrollUpdate, { passive: true });
-    window.addEventListener("resize", handleResize);
-
-    const resizeObserver =
-      typeof ResizeObserver !== "undefined"
-        ? new ResizeObserver(() => {
-            buildSectionMetrics();
-            requestScrollUpdate();
-          })
-        : null;
-
-    sectionMetricsRef.current.forEach((section) => {
-      if (section?.element && resizeObserver) {
-        resizeObserver.observe(section.element);
-      }
-    });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
 
     return () => {
-      window.removeEventListener("scroll", requestScrollUpdate);
-      window.removeEventListener("resize", handleResize);
-
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-      }
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) return undefined;
-
-    const originalOverflow = document.body.style.overflow;
+    if (!isMobileMenuOpen) return;
+    const orig = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
+    return () => { document.body.style.overflow = orig; };
   }, [isMobileMenuOpen]);
 
-  const handleNavClick = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const handleNavClick = () => setIsMobileMenuOpen(false);
 
   return (
     <>
       <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
-        <PageContainer className="site-header__container">
+        <div className="container-shell">
           <nav className="site-nav">
-            <a href="#home" className="site-brand" aria-label="Go to Home section">
+            <a href="#home" className="site-brand" aria-label="Go to Home">
               <span className="site-brand__mark">SP</span>
               <span className="site-brand__text">
                 <span className="site-brand__name">{fullName}</span>
@@ -153,145 +97,82 @@ function Navbar({ theme, toggleTheme }) {
             <div className="site-nav__desktop">
               <div className="site-nav__links">
                 {NAV_ITEMS.map((item) => {
-                  const sectionId = item.href.replace("#", "");
-                  const isActive = activeSection === sectionId;
-
+                  const id = item.href.replace("#", "");
                   return (
                     <a
                       key={item.label}
                       href={item.href}
-                      className={`site-nav__link ${isActive ? "is-active" : ""}`}
+                      className={`site-nav__link ${activeSection === id ? "is-active" : ""}`}
                     >
-                      <span className="site-nav__link-text">{item.label}</span>
+                      {item.label}
                     </a>
                   );
                 })}
               </div>
 
               <div className="site-nav__actions">
-                <a
-                  href={resumeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="premium-button premium-button--secondary"
-                  aria-label="Open resume"
-                  title="Resume"
-                >
+                <a href={resumeUrl} target="_blank" rel="noreferrer" className="premium-button premium-button--secondary" title="Resume">
                   <span>Resume</span>
                   <FaFileArrowDown />
                 </a>
-
-                <a
-                  href={socialMap.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icon-button"
-                  aria-label="Open LinkedIn profile"
-                  title="LinkedIn"
-                >
+                <a href={linkedin} target="_blank" rel="noreferrer" className="social-icon-button" aria-label="LinkedIn" title="LinkedIn">
                   <FaLinkedinIn />
                 </a>
-
-                <a
-                  href={socialMap.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icon-button"
-                  aria-label="Open GitHub profile"
-                  title="GitHub"
-                >
+                <a href={github} target="_blank" rel="noreferrer" className="social-icon-button" aria-label="GitHub" title="GitHub">
                   <FaGithub />
                 </a>
-
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               </div>
             </div>
 
             <div className="site-nav__mobile-actions">
               <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-
               <button
                 type="button"
                 className="mobile-menu-button"
-                onClick={() => setIsMobileMenuOpen((current) => !current)}
-                aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                onClick={() => setIsMobileMenuOpen((c) => !c)}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? <HiXMark /> : <HiBars3 />}
               </button>
             </div>
           </nav>
-        </PageContainer>
+        </div>
       </header>
 
       <div className={`mobile-nav ${isMobileMenuOpen ? "is-open" : ""}`}>
-        <PageContainer className="mobile-nav__container">
-          <div className="mobile-nav__panel glass-card glow-ring panel-blur">
+        <div className="container-shell">
+          <div className="mobile-nav__panel glass-card glow-ring">
             <div className="mobile-nav__links">
               {NAV_ITEMS.map((item) => {
-                const sectionId = item.href.replace("#", "");
-                const isActive = activeSection === sectionId;
-
+                const id = item.href.replace("#", "");
                 return (
                   <a
                     key={item.label}
                     href={item.href}
-                    className={`mobile-nav__link ${isActive ? "is-active" : ""}`}
+                    className={`mobile-nav__link ${activeSection === id ? "is-active" : ""}`}
                     onClick={handleNavClick}
                   >
                     {item.label}
                   </a>
                 );
               })}
-
-              <a
-                href={resumeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mobile-nav__link"
-                onClick={handleNavClick}
-                aria-label="Open resume"
-              >
-                Resume
-              </a>
             </div>
-
             <div className="mobile-nav__footer">
-              <a
-                href={socialMap.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon-button"
-                aria-label="Open LinkedIn profile"
-                title="LinkedIn"
-              >
+              <a href={linkedin} target="_blank" rel="noreferrer" className="social-icon-button" aria-label="LinkedIn">
                 <FaLinkedinIn />
               </a>
-
-              <a
-                href={socialMap.github}
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon-button"
-                aria-label="Open GitHub profile"
-                title="GitHub"
-              >
+              <a href={github} target="_blank" rel="noreferrer" className="social-icon-button" aria-label="GitHub">
                 <FaGithub />
               </a>
-
-              <a
-                href={resumeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="premium-button premium-button--secondary"
-                aria-label="Open resume"
-              >
-                <span>View Resume</span>
+              <a href={resumeUrl} target="_blank" rel="noreferrer" className="premium-button premium-button--secondary">
+                <span>Resume</span>
                 <FaFileArrowDown />
               </a>
             </div>
           </div>
-        </PageContainer>
+        </div>
       </div>
     </>
   );

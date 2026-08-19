@@ -1,28 +1,27 @@
-import { FaCode, FaDatabase, FaServer, FaToolbox, FaWandMagicSparkles } from "react-icons/fa6";
+import { FaCode, FaDatabase, FaServer, FaToolbox } from "react-icons/fa6";
 import skillsData from "../../data/skillsData";
-import PageContainer from "../layout/PageContainer";
-import SectionWrapper from "../layout/SectionWrapper";
-import SectionHeading from "../common/SectionHeading";
 
 const skillIcons = {
   Frontend: <FaCode />,
   Backend: <FaServer />,
   Database: <FaDatabase />,
-  Tools: <FaToolbox />,
-  "Additional Strengths": <FaWandMagicSparkles />,
+  "Tech Stack & Tools": <FaToolbox />,
 };
 
 function Skills() {
   return (
-    <SectionWrapper id="skills" className="skills-section">
-      <PageContainer>
+    <section id="skills" className="section-shell">
+      <div className="container-shell">
         <div data-reveal="up">
-          <SectionHeading
-            eyebrow="Skills"
-            title="Technologies and"
-            highlight="working strengths"
-            description="My skill set combines interface development, backend fundamentals, database handling, deployment tools, and practical product-building workflows."
-          />
+          <span className="section-eyebrow">Skills</span>
+          <h2 className="section-title">
+            Technologies and{" "}
+            <span className="gradient-text">working strengths</span>
+          </h2>
+          <p className="section-description">
+            My skill set combines interface development, backend fundamentals, database handling,
+            and practical product-building tools.
+          </p>
         </div>
 
         <div className="skills-grid">
@@ -37,16 +36,12 @@ function Skills() {
                 <div className="skills-card__icon">
                   {skillIcons[group.title]}
                 </div>
-
-                <div className="skills-card__header-copy">
-                  <h3 className="skills-card__title">{group.title}</h3>
-                  <p className="skills-card__subtitle">{group.subtitle}</p>
-                </div>
+                <h3 className="skills-card__title">{group.title}</h3>
               </div>
 
               <div className="skills-card__chips">
                 {group.items.map((item) => (
-                  <span key={item} className="skills-chip">
+                  <span key={item} className="skill-chip">
                     {item}
                   </span>
                 ))}
@@ -54,8 +49,8 @@ function Skills() {
             </article>
           ))}
         </div>
-      </PageContainer>
-    </SectionWrapper>
+      </div>
+    </section>
   );
 }
 
