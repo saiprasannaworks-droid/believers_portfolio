@@ -132,8 +132,10 @@ const mernProjects = [
     },
     links: {
       live: "https://cookingbuddy.netlify.app/",
-      github:
-        "https://github.com/saiprasannaworks-droid/Cooking_buddy",
+      frontend:
+        "https://github.com/saiprasannaworks-droid/Cooking_buddy/tree/main/client",
+      backend:
+        "https://github.com/saiprasannaworks-droid/Cooking_buddy/tree/main/server",
     },
   },
 ];
