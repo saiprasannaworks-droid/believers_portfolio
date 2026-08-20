@@ -19,9 +19,8 @@ const portfolioData = {
 
   highlights: [
     { label: "Core Stack", value: "React • Node • Express • MongoDB" },
-    { label: "Focus", value: "Full Stack Apps & Product UI" },
-    { label: "Base", value: "Chennai, India" },
-    { label: "Training", value: "GUVI ZEN Class • MERN" },
+    { label: "Focus", value: "Scalable Features & Functionality" },
+    { label: "Location", value: "Chennai, India" },
   ],
 
   capabilityCards: [

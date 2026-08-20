@@ -96,7 +96,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 15%;
 }
 
 .hero-profile-info {
@@ -119,7 +119,7 @@
 
 .hero-highlight-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
   margin-top: 0.9rem;
 }

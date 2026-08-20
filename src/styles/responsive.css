@@ -37,10 +37,12 @@
   /* Center hero visual when stacked */
   .hero-visual {
     max-width: 500px;
+    margin-inline: auto;
   }
 
   .about-side__panel {
     max-width: 600px;
+    margin-inline: auto;
   }
 }
 
