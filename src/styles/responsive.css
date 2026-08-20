@@ -19,8 +19,11 @@
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-/* ── Breakpoints ──────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   DESKTOP LARGE — up to 1200px
+   ══════════════════════════════════════════════════════════ */
 @media (max-width: 1200px) {
+  /* Stack two-column layouts to single column */
   .hero-layout,
   .about-layout,
   .contact-layout {
@@ -30,8 +33,20 @@
   .hero-content {
     max-width: 100%;
   }
+
+  /* Center hero visual when stacked */
+  .hero-visual {
+    max-width: 500px;
+  }
+
+  .about-side__panel {
+    max-width: 600px;
+  }
 }
 
+/* ══════════════════════════════════════════════════════════
+   NAVBAR — 1100px
+   ══════════════════════════════════════════════════════════ */
 @media (max-width: 1100px) {
   .site-nav__desktop {
     display: none;
@@ -48,82 +63,366 @@
   }
 }
 
+/* ══════════════════════════════════════════════════════════
+   TABLET — up to 1024px
+   ══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+  /* Capability cards 4 → 2 */
   .about-capabilities {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Stack all grids to single column */
   .skills-grid,
   .experience-grid,
-  .projects-grid,
   .contact-info-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Certs 3 → 2 */
   .certs-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* Footer cards 3 → 2 */
+  .site-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Contact form goes full width under info */
+  .contact-form-wrap {
+    max-width: 100%;
+  }
 }
 
+/* ══════════════════════════════════════════════════════════
+   TABLET SMALL — up to 900px
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* Projects 2 → 1 */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Prevent project cards from being too wide when single col */
+  .project-card {
+    max-width: 100%;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE — up to 768px
+   ══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+  /* Reduce section padding */
   .section-shell {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
 
   .section-shell--hero {
-    padding: 7rem 0 3.5rem;
+    padding: 6.5rem 0 3rem;
   }
 
+  /* Scale down titles */
   .section-title {
-    font-size: clamp(2rem, 10vw, 3.2rem);
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 12vw, 3.8rem);
+    font-size: clamp(2rem, 10vw, 3.2rem);
   }
 
-  .hero-highlight-grid,
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.92rem;
+  }
+
+  /* Hero highlights single column */
+  .hero-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* About capability cards 2 → 1 */
+  .about-capabilities {
+    grid-template-columns: 1fr;
+  }
+
+  /* Certs 2 → 1 */
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact form name/email fields stack */
   .contact-form__grid {
     grid-template-columns: 1fr;
   }
 
-  .about-capabilities,
-  .certs-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .site-brand__text {
-    display: none;
-  }
-
-  .site-nav {
-    min-height: 68px;
-    padding: 0.6rem 0.7rem;
-  }
-
+  /* Footer top stacks */
   .site-footer__top {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
+  .site-footer__actions {
+    flex-wrap: wrap;
+  }
+
+  /* Footer grid single column */
   .site-footer__grid {
     grid-template-columns: 1fr;
   }
 
+  /* Hide brand text on small screens */
+  .site-brand__text {
+    display: none;
+  }
+
+  /* Smaller nav */
+  .site-nav {
+    min-height: 64px;
+    padding: 0.5rem 0.6rem;
+  }
+
+  /* Reduce ambient orbs on mobile */
   .ambient-background__orb--one,
   .ambient-background__orb--two,
   .ambient-background__orb--three {
-    width: 200px;
-    height: 200px;
-    filter: blur(60px);
+    width: 180px;
+    height: 180px;
+    filter: blur(50px);
+    opacity: 0.5;
   }
-}
 
-@media (max-width: 480px) {
-  .projects-grid {
+  /* Hero actions wrap nicely */
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .hero-actions .premium-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Hero socials wrap */
+  .hero-socials {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  /* Profile card reduce padding */
+  .hero-profile-card {
+    padding: 0.8rem;
+  }
+
+  /* Experience card meta row wraps */
+  .experience-card__meta-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  /* Modal full screen on mobile */
+  .project-modal {
+    padding: 0;
+  }
+
+  .project-modal__dialog {
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .project-modal__content {
     grid-template-columns: 1fr;
   }
+
+  .project-modal__media {
+    position: static;
+  }
+
+  .project-modal__thumbs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer socials wrap */
+  .site-footer__socials {
+    flex-wrap: wrap;
+  }
+
+  /* Project card image height on smaller screens */
+  .project-card__media {
+    height: 180px;
+  }
+
+  /* About side panel */
+  .about-side__panel {
+    padding: 1rem;
+  }
+
+  /* Section description */
+  .section-description {
+    font-size: 0.92rem;
+  }
 }
 
+/* ══════════════════════════════════════════════════════════
+   SMALL MOBILE — up to 480px
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* Further reduce padding */
+  .section-shell {
+    padding: 2.8rem 0;
+  }
+
+  .section-shell--hero {
+    padding: 5.5rem 0 2.5rem;
+  }
+
+  /* Scale down titles further */
+  .section-title {
+    font-size: clamp(1.5rem, 8vw, 2.2rem);
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 9vw, 2.5rem);
+  }
+
+  /* Reduce card padding */
+  .experience-card,
+  .skills-card,
+  .contact-form-wrap {
+    padding: 1rem;
+  }
+
+  .project-card__body {
+    padding: 1rem;
+  }
+
+  .project-card__actions {
+    padding: 0 1rem 1rem;
+    flex-direction: column;
+  }
+
+  .project-card__action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Cert card */
+  .cert-card {
+    padding: 0.9rem;
+  }
+
+  /* Glass card reduce radius */
+  .glass-card {
+    border-radius: var(--radius-md);
+  }
+
+  /* Container more padding on mobile */
+  .container-shell {
+    width: calc(100% - 1.5rem);
+  }
+
+  /* Smaller chips */
+  .skill-chip {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.7rem;
+    min-height: 1.9rem;
+  }
+
+  /* Contact info cards stack content */
+  .contact-info-card {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Footer title */
+  .site-footer__title {
+    font-size: 1.3rem;
+  }
+
+  /* Modal close button */
+  .project-modal__close {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  /* About capability card */
+  .about-capability-card {
+    padding: 1rem;
+  }
+
+  /* Premium button smaller */
+  .premium-button {
+    font-size: 0.88rem;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Hero scroll indicator hide */
+  .hero-scroll-indicator {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   EXTRA SMALL — up to 360px
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  .container-shell {
+    width: calc(100% - 1rem);
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .hero-profile-frame {
+    aspect-ratio: 4 / 3.5;
+  }
+
+  .project-card__media {
+    height: 150px;
+  }
+
+  .project-modal__thumbs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-toggle {
+    width: 3.8rem;
+    height: 2.4rem;
+  }
+
+  .theme-toggle__icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 0.8rem;
+  }
+
+  .theme-toggle__thumb {
+    width: 1.6rem;
+    height: 1.6rem;
+    top: calc((2.4rem - 1.6rem) / 2 - 1px);
+    left: calc((2.4rem - 1.6rem) / 2 - 1px);
+  }
+
+  .theme-toggle__thumb.is-light {
+    transform: translateX(calc(3.8rem - 1.6rem - 2 * ((2.4rem - 1.6rem) / 2 - 1px)));
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ACCESSIBILITY
+   ══════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

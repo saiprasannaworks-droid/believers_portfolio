@@ -155,11 +155,18 @@
   font-weight: 600;
 }
 
+.experience-card__meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.5rem 0 0.7rem;
+}
+
 .experience-card__period {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-bottom: 0.7rem;
   color: var(--accent);
   font-size: 0.84rem;
   font-weight: 600;
@@ -176,7 +183,6 @@
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 700;
-  margin-bottom: 0.7rem;
 }
 
 .experience-card__list {

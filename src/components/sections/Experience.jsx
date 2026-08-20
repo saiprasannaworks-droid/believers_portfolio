@@ -43,10 +43,14 @@ function Experience() {
               </span>
               <h3 className="experience-card__title">{item.degree}</h3>
               <p className="experience-card__subtitle">{item.institution}</p>
-              <p className="experience-card__period">
-                <FaCalendarDays /> {item.year}
-              </p>
-              <div className="experience-card__badge">CGPA: {item.cgpa}</div>
+
+              <div className="experience-card__meta-row">
+                <span className="experience-card__period">
+                  <FaCalendarDays /> {item.year}
+                </span>
+                <span className="experience-card__badge">CGPA: {item.cgpa}</span>
+              </div>
+
               {item.credentialUrl && (
                 <a
                   href={item.credentialUrl}
