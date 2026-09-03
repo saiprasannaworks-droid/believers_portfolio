@@ -9,7 +9,7 @@ const portfolioData = {
   github: "https://github.com/saiprasannaworks-droid",
   location: "Chennai, India",
   resumeUrl:
-    "https://drive.google.com/file/d/1Mb2ypD4re0UA9onp0wBFqt3Y5V01DEzy/view?usp=sharing",
+    "https://drive.google.com/file/d/1qSkADNvUZGdOra-t40pXMEA34IUnpOoZ/view?usp=sharing",
   profileImage: profilePhoto,
 
   heroTagline: "Building scalable web applications with the MERN stack.",
