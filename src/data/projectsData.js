@@ -23,7 +23,7 @@ import expensetracker2 from "../assets/images/projects/expensetrackerReact/2.png
 const mernProjects = [
   {
     id: "believers-freelance-marketplace",
-    name: "Believers Freelance Marketplace",
+    name: "FreelancerConnect",
     shortDescription:
       "A production-grade freelance marketplace with role-based workflows, contracts, milestones, payments, and real-time communication.",
     detailedDescription:
@@ -53,19 +53,19 @@ const mernProjects = [
       gallery: [freelance1, freelance2],
     },
     links: {
-      live: "https://believersfreelancerapp.netlify.app/",
+      live: "https://freelancerconnect.netlify.app/login",
       github:
-        "https://github.com/saiprasannaworks-droid/Believers_freelancer_App/tree/main",
+        "https://github.com/saiprasannaworks-droid/FreelancerConnect",
       frontend:
-        "https://github.com/saiprasannaworks-droid/Believers_freelancer_App/tree/main/frontend/believers_freelancerApp",
+        "https://github.com/saiprasannaworks-droid/FreelancerConnect/tree/main/frontend/believers_freelancerApp",
       backend:
-        "https://github.com/saiprasannaworks-droid/Believers_freelancer_App/tree/main/backend",
+        "https://github.com/saiprasannaworks-droid/FreelancerConnect/tree/main/backend",
     },
   },
 
   {
     id: "believers-expense-tracker-fullstack",
-    name: "Believers Expense Tracker",
+    name: "SpendWise",
     shortDescription:
       "A full-stack expense tracking platform with authentication, dashboard analytics, filtering, and category-based spending insights.",
     detailedDescription:
@@ -92,13 +92,13 @@ const mernProjects = [
       gallery: [expense1, expense2],
     },
     links: {
-      live: "https://believersexpensetracker.netlify.app/",
+      live: "https://spendwise-webapp.netlify.app/login",
       github:
-        "https://github.com/saiprasannaworks-droid/Believers-Expense-Tracker",
+        "https://github.com/saiprasannaworks-droid/SpendWise",
       frontend:
-        "https://github.com/saiprasannaworks-droid/Believers-Expense-Tracker",
+        "https://github.com/saiprasannaworks-droid/SpendWise/tree/main/frontend",
       backend:
-        "https://github.com/saiprasannaworks-droid/Believers-Expense-Tracker",
+        "https://github.com/saiprasannaworks-droid/SpendWise/tree/main/backend",
     },
   },
 
@@ -145,7 +145,7 @@ const mernProjects = [
 const frontendProjects = [
   {
     id: "believers-cooking-frontend",
-    name: "Believers Cooking",
+    name: "RecipeVerse",
     shortDescription:
       "A recipe discovery application using React and TheMealDB API with search, filters, favorites, and detailed recipe views.",
     detailedDescription:
@@ -170,9 +170,9 @@ const frontendProjects = [
       gallery: [believersCooking1, believersCooking2],
     },
     links: {
-      live: "https://believerscookingapp.netlify.app/",
+      live: "https://recipeverseapp.netlify.app/",
       github:
-        "https://github.com/saiprasannaworks-droid/Believers_CookingApp",
+        "https://github.com/saiprasannaworks-droid/RecipeVerse",
     },
   },
 
