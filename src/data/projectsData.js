@@ -92,7 +92,7 @@ const mernProjects = [
       gallery: [expense1, expense2],
     },
     links: {
-      live: "https://spendwise-webapp.netlify.app/login",
+      live: "https://spendwise-webapp.netlify.app",
       github:
         "https://github.com/saiprasannaworks-droid/SpendWise",
       frontend:
